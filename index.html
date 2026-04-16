@@ -38,14 +38,18 @@ table td,table th{padding:0}
 .c13{padding-top:0pt;padding-bottom:0pt;line-height:1.15;orphans:2;widows:2;text-align:center}
 .c2{padding-top:0pt;padding-bottom:0pt;line-height:1.0;text-align:left;height:11pt}
 .c8{border-spacing:0;border-collapse:collapse;margin-right:auto}
-.c14{background-color:#ffffff;max-width:523.3pt;padding:36pt 36pt 36pt 36pt;margin:0 auto}
-.c10{margin-left:36pt;padding-left:0pt}
-.c11{padding:0;margin:0}
-.c4{height:52.4pt}
-.c7{height:47.1pt}
+.c14{background-color:#ffffff;width:210mm;min-height:297mm;padding:20mm 25mm;margin:0 auto;box-sizing:border-box}
 
-body{background-color:#f5f5f5;padding:20px;font-family:Arial,sans-serif}
-.form-wrapper{max-width:600px;margin:0 auto;background:#fff;padding:25px;box-shadow:0 2px 10px rgba(0,0,0,0.1)}
+body{background-color:#ccc;padding:20px;font-family:Arial,sans-serif}
+.form-wrapper{max-width:210mm;margin:0 auto;background:#fff;box-shadow:0 2px 10px rgba(0,0,0,0.1)}
+
+@media print{
+  @page{size:A4 portrait;margin:0}
+  body{background:#fff;padding:0}
+  .form-wrapper{box-shadow:none;margin:0;width:100%;max-width:none}
+  .btn-group,.no-print{display:none}
+  .input-field{background:transparent;border:none}
+}
 
 .input-field{background:transparent;border:none;border-bottom:1px solid #333;width:100%;font-family:inherit;font-size:11pt;padding:2px 0;outline:none}
 .input-field:focus{border-bottom:2px solid #0066cc}
@@ -63,18 +67,21 @@ body{background-color:#f5f5f5;padding:20px;font-family:Arial,sans-serif}
 .btn-outline:hover{background:#5a6268}
 
 @media (max-width:600px){
-  .c14{padding:15pt}
-  .form-wrapper{padding:15px}
+  .c14{padding:10mm}
+  .form-wrapper{width:100%}
   .btn-group{flex-direction:column}
   .btn{width:100%}
   .c10{margin-left:15pt}
+  p.c3 input,p.c3 select{width:100%!important;display:block;margin-top:5px}
 }
 
 @media print{
-  body{background:#fff;padding:0}
-  .form-wrapper{box-shadow:none;max-width:100%}
-  .btn-group{display:none}
-  .input-field{background:transparent}
+  @page{size:A4 portrait;margin:0}
+  body{background:#fff!important;padding:0!important}
+  .form-wrapper{box-shadow:none;margin:0;width:210mm!important;height:297mm;padding:20mm 25mm;box-sizing:border-box}
+  .btn-group,.no-print{display:none!important}
+  .input-field{background:transparent!important;border:none!important}
+  textarea.input-field{overflow:hidden}
 }
 
 .no-print{display:none}
@@ -91,11 +98,11 @@ body{background-color:#f5f5f5;padding:20px;font-family:Arial,sans-serif}
 <p class="c3"><span class="c6">Maklumat Murid</span></p>
 <p class="c0"><span class="c1"></span></p>
 
-<p class="c3"><span class="c1">Nama: </span><input type="text" class="input-field" id="studentName" style="width:300px"></p>
-<p class="c3"><span class="c1">Kelas: </span><input type="text" class="input-field" id="studentClass" style="width:200px"></p>
-<p class="c3"><span class="c1">Umur: </span><input type="text" class="input-field" id="studentAge" style="width:80px"></p>
+<p class="c3"><span class="c1">Nama: </span><input type="text" class="input-field" id="studentName" style="width:180mm"></p>
+<p class="c3"><span class="c1">Kelas: </span><input type="text" class="input-field" id="studentClass" style="width:120mm"></p>
+<p class="c3"><span class="c1">Umur: </span><input type="text" class="input-field" id="studentAge" style="width:50mm"></p>
 <p class="c3"><span class="c1">Jantina: </span>
-<select class="input-field" id="studentGender" style="width:100px">
+<select class="input-field" id="studentGender" style="width:60mm">
 <option value=""></option>
 <option value="Lelaki">Lelaki</option>
 <option value="Perempuan">Perempuan</option>
@@ -106,8 +113,8 @@ body{background-color:#f5f5f5;padding:20px;font-family:Arial,sans-serif}
 <p class="c3"><span class="c6">Maklumat Guru Perujuk</span></p>
 <p class="c0"><span class="c1"></span></p>
 
-<p class="c3"><span class="c1">Nama Guru: </span><input type="text" class="input-field" id="teacherName" style="width:280px"></p>
-<p class="c3"><span class="c1">Tarikh: </span><input type="date" class="input-field" id="referralDate" style="width:150px"></p>
+<p class="c3"><span class="c1">Nama Guru: </span><input type="text" class="input-field" id="teacherName" style="width:160mm"></p>
+<p class="c3"><span class="c1">Tarikh: </span><input type="date" class="input-field" id="referralDate" style="width:80mm"></p>
 
 <p class="c0"><span class="c1"></span></p>
 <p class="c3"><span class="c6">Sebab Rujukan</span></p>
@@ -117,7 +124,7 @@ body{background-color:#f5f5f5;padding:20px;font-family:Arial,sans-serif}
 <li class="c3 c10 li-bullet-0"><input type="checkbox" class="checkbox-item" name="reason" value="Pergaduhan / Buli"> <span class="c1">Pergaduhan / Buli</span></li>
 <li class="c3 c10 li-bullet-0"><input type="checkbox" class="checkbox-item" name="reason" value="Merokok / Vape"> <span class="c1">Merokok / Vape</span></li>
 <li class="c3 c10 li-bullet-0">
-<input type="checkbox" class="checkbox-item" name="reason" value="Lain-Lain" id="otherCheck"> <span class="c1">Lain-Lain: </span><input type="text" class="input-field" id="otherReason" style="width:200px" placeholder="______________">
+<input type="checkbox" class="checkbox-item" name="reason" value="Lain-Lain" id="otherCheck"> <span class="c1">Lain-Lain: </span><input type="text" class="input-field" id="otherReason" style="width:100mm" placeholder="______________">
 </li>
 </ul>
 
@@ -134,8 +141,8 @@ body{background-color:#f5f5f5;padding:20px;font-family:Arial,sans-serif}
 
 <p class="c0"><span class="c1"></span></p>
 <p class="c0"><span class="c1"></span></p>
-<p class="c3"><span class="c1">Nama Kaunselor: </span><input type="text" class="input-field" id="counselorName" style="width:250px"></p>
-<p class="c3"><span class="c1">Tarikh: </span><input type="date" class="input-field" id="counselorDate" style="width:150px"></p>
+<p class="c3"><span class="c1">Nama Kaunselor: </span><input type="text" class="input-field" id="counselorName" style="width:150mm"></p>
+<p class="c3"><span class="c1">Tarikh: </span><input type="date" class="input-field" id="counselorDate" style="width:80mm"></p>
 <p class="c3"><span class="c1">Tandatangan Kaunselor: _________________________________________________________________________</span></p>
 </div>
 
