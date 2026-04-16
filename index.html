@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rujukan Murid ke Unit Kaunseling</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            padding: 20px;
+            line-height: 1.5;
+        }
+        
+        .form-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        @media (max-width: 600px) {
+            .form-container {
+                padding: 20px;
+            }
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .header img {
+            width: 80px;
+            height: auto;
+            margin-bottom: 10px;
+        }
+        
+        .header h1 {
+            font-size: 18px;
+            color: #333;
+            margin-bottom: 5px;
+        }
+        
+        .header h2 {
+            font-size: 16px;
+            color: #666;
+            font-weight: normal;
+        }
+        
+        .section {
+            margin-bottom: 25px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        
+        .section-title {
+            font-weight: bold;
+            font-size: 14px;
+            color: #333;
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #0066cc;
+        }
+        
+        .form-group {
+            margin-bottom: 12px;
+        }
+        
+        .form-group label {
+            display: block;
+            font-size: 13px;
+            color: #555;
+            margin-bottom: 5px;
+        }
+        
+        .form-group input[type="text"],
+        .form-group input[type="date"],
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 14px;
+            font-family: Arial, sans-serif;
+        }
+        
+        .form-group textarea {
+            min-height: 80px;
+            resize: vertical;
+        }
+        
+        .checkbox-group {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 10px;
+        }
+        
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            font-size: 13px;
+        }
+        
+        .checkbox-item input {
+            margin-right: 8px;
+            width: 18px;
+            height: 18px;
+        }
+        
+        .btn-group {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            padding: 12px 30px;
+            font-size: 14px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .btn-primary {
+            background-color: #0066cc;
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background-color: #0052a3;
+        }
+        
+        .btn-secondary {
+            background-color: #28a745;
+            color: white;
+        }
+        
+        .btn-secondary:hover {
+            background-color: #218838;
+        }
+        
+        .btn-outline {
+            background-color: #6c757d;
+            color: white;
+        }
+        
+        .btn-outline:hover {
+            background-color: #5a6268;
+        }
+        
+        @media (max-width: 480px) {
+            .btn-group {
+                flex-direction: column;
+            }
+            
+            .btn {
+                width: 100%;
+            }
+            
+            .checkbox-group {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
+        @media print {
+            body {
+                background: white;
+            }
+            
+            .form-container {
+                box-shadow: none;
+            }
+            
+            .btn-group {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container" id="formContainer">
+        <div class="header">
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%23fff' stroke='%230066cc' stroke-width='3'/%3E%3Ctext x='50' y='60' text-anchor='middle' font-size='40' fill='%230066cc'%3EM%3C/text%3E%3C/svg%3E" alt="Logo">
+            <h1>SMK METHODIST TANJONG MALIM</h1>
+            <h2>Rujukan Murid ke Unit Kaunseling (Kes Disiplin)</h2>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Maklumat Murid</div>
+            <div class="form-group">
+                <label for="studentName">Nama:</label>
+                <input type="text" id="studentName" placeholder="Masukkan nama penuh">
+            </div>
+            <div class="form-group">
+                <label for="studentClass">Kelas:</label>
+                <input type="text" id="studentClass" placeholder="Contoh: 5 Arif">
+            </div>
+            <div class="form-group">
+                <label for="studentAge">Umur:</label>
+                <input type="text" id="studentAge" placeholder="Contoh: 17 tahun">
+            </div>
+            <div class="form-group">
+                <label for="studentGender">Jantina:</label>
+                <select id="studentGender">
+                    <option value="">Pilih jantina</option>
+                    <option value="Lelaki">Lelaki</option>
+                    <option value="Perempuan">Perempuan</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Maklumat Guru Perujuk</div>
+            <div class="form-group">
+                <label for="teacherName">Nama Guru:</label>
+                <input type="text" id="teacherName" placeholder="Masukkan nama guru">
+            </div>
+            <div class="form-group">
+                <label for="referralDate">Tarikh:</label>
+                <input type="date" id="referralDate">
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Sebab Rujukan</div>
+            <div class="checkbox-group">
+                <label class="checkbox-item">
+                    <input type="checkbox" name="reason" value="Lewat / Ponteng Kelas">
+                    Lewat / Ponteng Kelas
+                </label>
+                <label class="checkbox-item">
+                    <input type="checkbox" name="reason" value="Tidak Patuh Arahan">
+                    Tidak Patuh Arahan
+                </label>
+                <label class="checkbox-item">
+                    <input type="checkbox" name="reason" value="Pergaduhan / Buli">
+                    Pergaduhan / Buli
+                </label>
+                <label class="checkbox-item">
+                    <input type="checkbox" name="reason" value="Merokok / Vape">
+                    Merokok / Vape
+                </label>
+                <label class="checkbox-item">
+                    <input type="checkbox" name="reason" value="Lain-Lain" id="otherReasonCheck">
+                    Lain-Lain:
+                </label>
+            </div>
+            <div class="form-group" style="margin-top: 10px;">
+                <input type="text" id="otherReasonText" placeholder="Nyatakan lain-lain sebab..." style="display: none;">
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Huraian Ringkas Kes</div>
+            <div class="form-group">
+                <textarea id="caseDescription" placeholder="Tuliskan huraian ringkas tentang kes..."></textarea>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Ulasan Kaunselor</div>
+            <div class="form-group">
+                <textarea id="counselorComments" placeholder="Tuliskan ulasan kaunselor..."></textarea>
+            </div>
+            <div class="form-group">
+                <label for="counselorName">Nama Kaunselor:</label>
+                <input type="text" id="counselorName" placeholder="Masukkan nama kaunselor">
+            </div>
+            <div class="form-group">
+                <label for="counselorDate">Tarikh:</label>
+                <input type="date" id="counselorDate">
+            </div>
+            <div class="form-group">
+                <label>Tandatangan Kaunselor:</label>
+                <div style="border-bottom: 1px solid #333; height: 40px; margin-top: 10px;"></div>
+            </div>
+        </div>
+
+        <div class="btn-group">
+            <button type="button" class="btn btn-secondary" onclick="exportPDF()">Eksport ke PDF</button>
+            <button type="button" class="btn btn-outline" onclick="resetForm()">Reset Borang</button>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('otherReasonCheck').addEventListener('change', function() {
+            const textInput = document.getElementById('otherReasonText');
+            textInput.style.display = this.checked ? 'block' : 'none';
+        });
+
+        function exportPDF() {
+            const element = document.getElementById('formContainer');
+            
+            const buttons = element.querySelector('.btn-group');
+            buttons.style.display = 'none';
+            
+            const opt = {
+                margin: 10,
+                filename: 'Rujukan_Murid_Ke_Unit_Kaunseling.pdf',
+                image: { type: 'jpeg', quality: 0.98 },
+                html2canvas: { scale: 2, useCORS: true },
+                jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+            };
+            
+            html2pdf().set(opt).from(element).save().then(() => {
+                buttons.style.display = 'flex';
+            });
+        }
+
+        function resetForm() {
+            if (confirm('Adakah anda pasti mahu reset borang?')) {
+                document.querySelectorAll('input[type="text"]').forEach(input => input.value = '');
+                document.querySelectorAll('input[type="date"]').forEach(input => input.value = '');
+                document.querySelectorAll('select').forEach(select => select.value = '');
+                document.querySelectorAll('textarea').forEach(textarea => textarea.value = '');
+                document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => checkbox.checked = false);
+                document.getElementById('otherReasonText').style.display = 'none';
+            }
+        }
+
+        document.getElementById('referralDate').valueAsDate = new Date();
+    </script>
+</body>
+</html>
