@@ -1,8 +1,0 @@
-name: Deploy to GitHub Pages
-url: https://hedarchion.github.io
-baseurl: /kaunseling
-
-title: Rujukan Murid ke Unit Kaunseling
-description:SMK Methodist Tanjong Malim - Rujukan Murid ke Unit Kaunseling
-
-markdown: kramdown
